@@ -15,21 +15,10 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package guru.sfg.beer.order.service.services;
+package guru.sfg.beer.order.service.domain;
 
-
-import guru.sfg.brewery.model.BeerOrderDto;
-import guru.sfg.brewery.model.BeerOrderPagedList;
-import org.springframework.data.domain.Pageable;
-
-import java.util.UUID;
-
-public interface BeerOrderService {
-    BeerOrderPagedList listOrders(UUID customerId, Pageable pageable);
-
-    BeerOrderDto placeOrder(UUID customerId, BeerOrderDto beerOrderDto);
-
-    BeerOrderDto getOrderById(UUID customerId, UUID orderId);
-
-    void pickupOrder(UUID customerId, UUID orderId);
+public enum BeerOrderStatusEnum {
+    NEW, VALIDATED, VALIDATION_PENDING, VALIDATION_EXCEPTION,
+    ALLOCATION_PENDING, ALLOCATED, ALLOCATION_EXCEPTION,
+    PENDING_INVENTORY, PICKED_UP, DELIVERED, DELIVERY_EXCEPTION
 }
