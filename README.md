@@ -1,5 +1,5 @@
 [![CircleCI](https://circleci.com/gh/JulioAvalos/mssc-beer-order-service.svg?style=svg)](https://circleci.com/gh/JulioAvalos/mssc-beer-order-service)
-# MSSC Beer Service
+# MSSC Beer Order Service
 
 Source code for Beer Service!
 

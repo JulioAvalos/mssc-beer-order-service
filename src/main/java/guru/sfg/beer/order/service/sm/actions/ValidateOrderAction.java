@@ -17,9 +17,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
-/**
- * Created by jt on 11/30/19.
- */
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -30,13 +27,13 @@ public class ValidateOrderAction implements Action<BeerOrderStatusEnum, BeerOrde
     private final JmsTemplate jmsTemplate;
 
     @Override
-    public void execute(StateContext<BeerOrderStatusEnum, BeerOrderEventEnum> context) {
-        String beerOrderId = (String) context.getMessage().getHeaders().get(BeerOrderManagerImpl.ORDER_ID_HEADER);
+    public void execute(StateContext<BeerOrderStatusEnum, BeerOrderEventEnum> stateContext) {
+        String beerOrderId = (String) stateContext.getMessage().getHeaders().get(BeerOrderManagerImpl.ORDER_ID_HEADER);
         BeerOrder beerOrder = beerOrderRepository.findOneById(UUID.fromString(beerOrderId));
 
         jmsTemplate.convertAndSend(JmsConfig.VALIDATE_ORDER_QUEUE, ValidateOrderRequest.builder()
-                    .beerOrder(beerOrderMapper.beerOrderToDto(beerOrder))
-                    .build());
+            .beerOrder(beerOrderMapper.beerOrderToDto(beerOrder))
+            .build());
 
         log.debug("Sent Validation request to queue for order id " + beerOrderId);
     }
