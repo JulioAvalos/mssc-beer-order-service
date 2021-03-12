@@ -20,11 +20,11 @@ import java.util.EnumSet;
 @EnableStateMachineFactory
 public class BeerOrderStateMachineConfig extends StateMachineConfigurerAdapter<BeerOrderStatusEnum, BeerOrderEventEnum> {
 
-    private final Action<BeerOrderStatusEnum, BeerOrderEventEnum>  validateOrderAction;
-    private final Action<BeerOrderStatusEnum, BeerOrderEventEnum>  allocateOrderAction;
-    private final Action<BeerOrderStatusEnum, BeerOrderEventEnum>  validationFailureAction;
-    private final Action<BeerOrderStatusEnum, BeerOrderEventEnum>  allocationFailureAction;
-    private final Action<BeerOrderStatusEnum, BeerOrderEventEnum>  deallocateOrderAction;
+    private final Action<BeerOrderStatusEnum, BeerOrderEventEnum> validateOrderAction;
+    private final Action<BeerOrderStatusEnum, BeerOrderEventEnum> allocateOrderAction;
+    private final Action<BeerOrderStatusEnum, BeerOrderEventEnum> validationFailureAction;
+    private final Action<BeerOrderStatusEnum, BeerOrderEventEnum> allocationFailureAction;
+    private final Action<BeerOrderStatusEnum, BeerOrderEventEnum> deallocateOrderAction;
 
     @Override
     public void configure(StateMachineStateConfigurer<BeerOrderStatusEnum, BeerOrderEventEnum> states) throws Exception {
