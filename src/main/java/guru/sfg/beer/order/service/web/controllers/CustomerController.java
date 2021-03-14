@@ -24,7 +24,8 @@ public class CustomerController {
     @GetMapping
     public CustomerPagedList listCustomer(@RequestParam(value = "pageNumber", required = false) Integer pageNumber,
                                           @RequestParam(value = "pageSize", required = false) Integer pageSize) {
-        if (pageNumber == null || pageNumber < 0){
+
+        if (pageNumber == null || pageNumber < 0) {
             pageNumber = DEFAULT_PAGE_NUMBER;
         }
 
@@ -34,6 +35,5 @@ public class CustomerController {
 
         return customerService.listCustomers(PageRequest.of(pageNumber, pageSize));
     }
-
 
 }
